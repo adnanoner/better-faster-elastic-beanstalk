@@ -24,4 +24,3 @@ if [ ! -f "/opt/elasticbeanstalk/node-install/npm_updated" ]; then
 else
   echo "Skipping NPM -g version update. To update, please uncomment 40install_node.sh:12"
 fi
-Raw
