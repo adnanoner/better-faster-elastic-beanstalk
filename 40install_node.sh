@@ -2,12 +2,6 @@
 # Include envs
 . /opt/elasticbeanstalk/env.vars
 
-function error_exit
-{
-  eventHelper.py --msg "$1" --severity ERROR
-  exit $2
-}
-
 #make sure node binaries can be found globally
 if [ ! -L /usr/bin/node ]; then
   ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/node /usr/bin/node
@@ -16,6 +10,19 @@ fi
 if [ ! -L /usr/bin/npm ]; then
   ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm /usr/bin/npm
 fi
+
+# function error_exit
+# {
+#   eventHelper.py --msg "$1" --severity ERROR
+#   exit $2
+# }
+# 
+#download and extract desired node.js version 
+# echo "checking node..."
+# OUT=$( [ ! -d "/opt/elasticbeanstalk/node-install" ] && echo "trying to install node.js $NODE_VER"   && mkdir /opt/elasticbeanstalk/node-install ; cd /opt/elasticbeanstalk/node-install/ && \
+#   wget -nc http://nodejs.org/dist/v$NODE_VER/node-v$NODE_VER-linux-$ARCH.tar.gz && \
+#   tar --skip-old-files -xzpf node-v$NODE_VER-linux-$ARCH.tar.gz) || error_exit "Failed to UPDATE node version. $OUT" $?.
+# echo $OUT
 
 if [ ! -f "/opt/elasticbeanstalk/node-install/npm_updated" ]; then
   /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm install npm@$NPM_VER -g
