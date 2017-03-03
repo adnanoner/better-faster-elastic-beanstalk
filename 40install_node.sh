@@ -15,12 +15,12 @@ if [ ! -L /usr/bin/node ]; then
   ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/node /usr/bin/node
 fi
 
-# function error_exit
-# {
-#   eventHelper.py --msg "$1" --severity ERROR
-#   exit $2
-# }
-# 
+function error_exit
+{
+  eventHelper.py --msg "$1" --severity ERROR
+  exit $2
+}
+
 #download and extract desired node.js version 
 echo "checking node..."
 OUT=$( [ ! -d "/opt/elasticbeanstalk/node-install" ] && echo "trying to install node.js $NODE_VER"   && mkdir /opt/elasticbeanstalk/node-install ; cd /opt/elasticbeanstalk/node-install/ && \
