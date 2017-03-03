@@ -1,20 +1,19 @@
 #!/bin/bash
-# Include envs
-. /opt/elasticbeanstalk/env.vars
+
+# NPM_VER=3.10.8
+ARCH=x64
+
+if [ -z "$1" ]; then
+	# No specific version defined
+	NODE_VER=7.6.0
+else
+	NODE_VER=$1
+fi
 
 #make sure node binaries can be found globally
 if [ ! -L /usr/bin/node ]; then
   ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/node /usr/bin/node
 fi
-
-if [ -z "$1" ]; then
-	# No specific version defined
-	echo true
-else
-	NODE_VER=$1
-fi
-
-echo $NODE_VER
 
 # function error_exit
 # {
