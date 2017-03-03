@@ -12,7 +12,6 @@ fi
 
 echo $NODE_VER
 
-
 # #make sure node binaries can be found globally
 # if [ ! -L /usr/bin/node ]; then
 #   ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/node /usr/bin/node
